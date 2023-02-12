@@ -8,6 +8,8 @@
     @viteReactRefresh
     @vite('resources/ts/app.tsx')
     @inertiaHead
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
 <body>

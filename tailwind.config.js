@@ -1,7 +1,14 @@
 module.exports = {
-    content: ["./resources/**/*.{js,jsx,ts,tsx}"],
-    theme: {
-        extend: {},
+  content: ["./resources/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    fontFamily: {
+      main: ["Montserrat", "sans-serif"],
+      sub: ["Playfair Display", "serif"],
     },
-    plugins: [],
+    backgroundImage: {
+      "hero-image": "url('/images/hero.jpg')",
+    },
+    extend: {},
+  },
+  plugins: [],
 };

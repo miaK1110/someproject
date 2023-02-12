@@ -8,8 +8,8 @@ import "../css/app.css";
 createInertiaApp({
   resolve: (name) =>
     resolvePageComponent(
-      `./pages/${name}.tsx`,
-      import.meta.glob("./pages/**/*.tsx")
+      `./Pages/toppage/${name}.tsx`,
+      import.meta.glob("./Pages/**/*.tsx")
     ),
   setup({ el, App, props }) {
     createRoot(document.getElementById("app")!).render(<App {...props} />);
