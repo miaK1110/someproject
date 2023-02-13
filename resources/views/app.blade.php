@@ -12,6 +12,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 
+<style>
+    /* This code needs to move into css file later */
+    .mega-menu {
+        display: none;
+        left: 0;
+        position: absolute;
+        text-align: left;
+        width: 100%;
+    }
+
+    .hoverable {
+        position: static;
+    }
+
+    .hoverable>a:after {
+        content: "";
+        font-size: 10px;
+        padding-left: 6px;
+        position: relative;
+        top: -1px;
+    }
+
+    .hoverable:hover .mega-menu {
+        display: block;
+    }
+
+</style>
+
 <body>
     @inertia
 </body>
