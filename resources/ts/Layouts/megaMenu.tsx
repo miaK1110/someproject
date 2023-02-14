@@ -3,96 +3,153 @@ import React from "react";
 const categories = [
   {
     name: "New",
+    image: "/images/new1.jpg",
     subCategory: [
       {
-        name: "test",
+        name: "Spring Lipgloss collenctions",
         path: "/",
       },
       {
-        name: "test",
+        name: "Liquid glitter eyeshadow collenctions",
         path: "/",
       },
       {
-        name: "test",
+        name: "EyeShadow Pallets",
         path: "/",
       },
       {
-        name: "test",
+        name: "Black Eyeliner",
+        path: "/",
+      },
+      {
+        name: "Brushes",
+        path: "/",
+      },
+      {
+        name: "Face Primers",
         path: "/",
       },
     ],
   },
   {
     name: "Lips",
+    image: "/images/lipsticks.jpg",
     subCategory: [
       {
-        name: "test",
+        name: "Lip Sticks",
         path: "/",
       },
       {
-        name: "test",
+        name: "Liquid LipSticks",
         path: "/",
       },
       {
-        name: "test",
+        name: "Lip Grosses",
         path: "/",
       },
       {
-        name: "test",
+        name: "Lip Liners",
         path: "/",
       },
       {
-        name: "test",
+        name: "Lip Pallets",
+        path: "/",
+      },
+      {
+        name: "Lip Care",
         path: "/",
       },
     ],
   },
   {
     name: "Face",
+    image: "images/foundations.jpg",
     subCategory: [
       {
-        name: "test",
+        name: "Foundations",
+        path: "/",
+      },
+      {
+        name: "Powders",
+        path: "/",
+      },
+      {
+        name: "Blushes",
+        path: "/",
+      },
+      {
+        name: "Concealers",
+        path: "/",
+      },
+      {
+        name: "Highlighters",
+        path: "/",
+      },
+      {
+        name: "Face Primers",
         path: "/",
       },
     ],
   },
   {
     name: "Eyes",
+    image: "/images/eyeliners.jpg",
     subCategory: [
       {
-        name: "test",
+        name: "Eye Liners",
         path: "/",
       },
       {
-        name: "test",
+        name: "Eye Shadows",
         path: "/",
       },
       {
-        name: "test",
+        name: "Mascaras",
+        path: "/",
+      },
+      {
+        name: "Lashes",
         path: "/",
       },
     ],
   },
   {
     name: "Brushes",
+    image: "/images/brushes.jpg",
     subCategory: [
       {
-        name: "test",
+        name: "Eye Brushes",
         path: "/",
       },
       {
-        name: "test",
+        name: "Lip Brushes",
         path: "/",
       },
       {
-        name: "test",
+        name: "Face Brushes",
+        path: "/",
+      },
+      {
+        name: "Others",
         path: "/",
       },
     ],
   },
 ];
 
+type SubCategory = {
+  name: string;
+  path: string;
+};
+
+type Category = {
+  name: string;
+  image: string;
+  subCategory: SubCategory[];
+};
+
 const megaMenu = () => {
+  const itemNum = 3;
   return (
     <ul className="flex justify-center">
       {categories.map((category, index) => (
@@ -108,18 +165,38 @@ const megaMenu = () => {
           </a>
           <div className="mega-menu mb-16 bg-white p-6 shadow-xl sm:mb-0">
             <div className="container mx-auto mx-2 flex w-full flex-wrap justify-between">
-              <div className="mb-8 w-full text-white">
-                <h2 className="text-2xl font-bold text-black">
-                  {category.name}
-                </h2>
+              <div className="mb-8 flex w-full items-center justify-center">
+                <div>
+                  <h2 className="pb-2 text-2xl font-bold text-black">
+                    {category.name}
+                  </h2>
+                  <img
+                    src={category.image}
+                    alt={`${category.name}_image`}
+                    className="h-[300px] w-[300px]"
+                  />
+                </div>
+                <ul className="ml-8 w-full px-4 pb-6 sm:w-1/2">
+                  {category.subCategory
+                    .reduce<SubCategory[][]>((acc, subCategory, index) => {
+                      const chunkIndex = Math.floor(index / itemNum);
+                      if (!acc[chunkIndex]) {
+                        acc[chunkIndex] = [];
+                      }
+                      acc[chunkIndex].push(subCategory);
+                      return acc;
+                    }, [])
+                    .map((subCategoryGroup, groupIndex) => (
+                      <div key={groupIndex} className="mb-10 flex gap-10">
+                        {subCategoryGroup.map((subCategory, index) => (
+                          <li className="mb-2 font-bold text-black" key={index}>
+                            <a href="">{subCategory.name}</a>
+                          </li>
+                        ))}
+                      </div>
+                    ))}
+                </ul>
               </div>
-              <ul className="w-full px-4 pb-6 pt-6 sm:w-1/2">
-                {category.subCategory.map((subCategory, index) => (
-                  <li className="mb-2 font-bold text-black" key={index}>
-                    {subCategory.name}
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         </li>

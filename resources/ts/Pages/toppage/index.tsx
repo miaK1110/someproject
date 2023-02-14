@@ -3,6 +3,7 @@ import Bestsellers from "./bestsellers";
 import InstagramPosts from "./instagramPosts";
 import NewProducts from "./newProducts";
 import MegaMenu from "../../Layouts/megaMenu";
+import Footer from "../../Layouts/footer";
 
 const TopPage = () => {
   return (
@@ -13,6 +14,9 @@ const TopPage = () => {
       <Bestsellers />
       <NewProducts />
       <InstagramPosts />
+      {/* temporarily space */}
+      <div className="h-[180px]"></div>
+      <Footer />
     </div>
   );
 };
